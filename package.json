@@ -1,0 +1,53 @@
+{
+  "name": "pgr6301-exam-soleimsen",
+  "version": "1.0.0",
+  "description": "[Heroku](link til heroku)\r [Test rapport](link til testrapport)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:client && npm run test:server",
+    "test:coverage": "npm run test:client:coverage",
+    "test:client": "cd client && npm test",
+    "test:client:coverage": "cd client && npm test -- --collectCoverage",
+    "test:server": "cd server && npm test",
+    "test:server:coverage": "cd server && npm test -- --collectCoverage",
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "start": "cd server && npm start",
+    "prepare": "husky install",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install --include=dev",
+    "install:server": "cd server && npm install",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristiania-pg6301-2022/pgr6301-exam-Soleimsen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristiania-pg6301-2022/pgr6301-exam-Soleimsen/issues"
+  },
+  "homepage": "https://github.com/kristiania-pg6301-2022/pgr6301-exam-Soleimsen#readme",
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "husky": "^7.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write",
+      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+      "post-applypatch": "echo \"[Husky] post-applypatch\""
+    }
+  },
+  "dependencies": {
+    "coveralls": "^3.1.1"
+  }
+}
